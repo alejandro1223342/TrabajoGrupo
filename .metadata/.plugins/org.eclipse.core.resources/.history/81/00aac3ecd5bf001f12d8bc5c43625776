@@ -10,6 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.krakedev.inventarios.bdd.CatalogoBDD;
+import com.krakedev.inventarios.entidades.Catalogo;
 import com.krakedev.reservaciones.bdd.BusesBDD;
 import com.krakedev.reservaciones.entidades.Buses;
 import com.krakedev.reservaciones.excepciones.KrakeDevException;

@@ -62,7 +62,7 @@ public class BusesBDD {
 			PreparedStatement ps = con
 					.prepareStatement(""
 							+ "INSERT INTO buses "
-							+ "	(bus_id, bus_nombre, bus_cantpasajeros) "
+							+ "	bus_id, bus_nombre, bus_cantpasajeros) "
 							+ "	VALUES (?, ?, ?)");
 			ps.setString(1, buses.getBus_id());
 			ps.setString(2, buses.getBus_nombre());
