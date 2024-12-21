@@ -70,4 +70,37 @@ public class RutasBDD {
 
 		return rutas;
 	}
+	
+	public void crear(Rutas ruta) throws KrakeDevException {
+		Connection conn = null;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("INSERT INTO public.rutas(");
+	    sb.append(" bus_id, ciu_id_origen, ciu_id_destino)");
+		sb.append(" VALUES (?, ?, ?)");
+		String sql = sb.toString();
+		try {
+			conn = ConexionBDD.obtenerConexion();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, ruta.getBus_id().getBus_id());
+			ps.setInt(2, ruta.getCiu_id_origen().getCiu_id());
+			ps.setInt(3, ruta.getCiu_id_destino().getCiu_id());
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al guardar la ruta");
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
